@@ -4,7 +4,7 @@ import { useState, type ChangeEvent } from 'react'
 function App() {
 
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
-  const [frameRatio, setFrameRatio] = useState(0.08)
+  const [frameRatio, setFrameRatio] = useState(0.01)
   const [previewDimensions, setPreviewDimensions] = useState({
     width: 0,
     height: 0,
@@ -118,13 +118,16 @@ function App() {
           />
         </label>
 
-        <button className="button" onClick={handleDownload}>
-          Download image
-        </button>
+        <div className="editor-buttons">
+          <button className="button" onClick={handleDownload}>
+            Download image
+          </button>
 
-        <button className="button" onClick={resetImage}>
-          Change image
-        </button>
+          <button className="text-button" onClick={resetImage}>
+            Change image
+          </button>
+        </div>
+
       </section>
 
     ) : (

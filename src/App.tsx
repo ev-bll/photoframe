@@ -13,6 +13,12 @@ function App() {
     Math.min(previewDimensions.width, previewDimensions.height) * frameRatio,
   )
 
+  const RATIO_MIN = 0.01
+  const RATIO_MAX = 0.25
+
+  const progressPercent =
+    ((frameRatio - RATIO_MIN) / (RATIO_MAX - RATIO_MIN)) * 100
+
   function handleImageChange(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0]
 
@@ -110,11 +116,12 @@ function App() {
 
           <input
             type="range"
-            min="0.01"
-            max="0.15"
+            min={RATIO_MIN}
+            max={RATIO_MAX}
             step="0.01"
             value={frameRatio}
             onChange={(event) => setFrameRatio(Number(event.target.value))}
+            style={{ '--progress': `${progressPercent}%` } as React.CSSProperties}
           />
         </label>
 
@@ -124,7 +131,7 @@ function App() {
           </button>
 
           <button className="text-button" onClick={resetImage}>
-            Change image
+            Change photo
           </button>
         </div>
 

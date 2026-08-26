@@ -3,7 +3,6 @@ import { useState, type ChangeEvent } from 'react'
 
 function App() {
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
   const [frameRatio, setFrameRatio] = useState(0.08)
   const [previewDimensions, setPreviewDimensions] = useState({
@@ -19,8 +18,6 @@ function App() {
 
     if (!file) return
 
-    setSelectedFile(file)
-
     const url = URL.createObjectURL(file)
     setPreviewUrl(url)
   }
@@ -30,7 +27,6 @@ function App() {
       URL.revokeObjectURL(previewUrl)
     }
 
-    setSelectedFile(null)
     setPreviewUrl(null)
   }
 

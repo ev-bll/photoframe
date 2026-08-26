@@ -1,0 +1,56 @@
+:root {
+  /* ---COLORS--- */
+
+  /* Primitives */
+  --blue-200: #D0E5E6;
+  --blue-300: #B9D8DA;
+  --blue-400: #94C3C7;
+  --blue-900: #284A4D;
+  --purple: #706DB6;
+  --black: #091011;
+  --white: #FFFFFF;
+
+  /* Semantic */
+  --background: var(--blue-300);
+  --surface: var(--white);
+  --action: var(--black);
+  --action-text: var(--white);
+  --text-primary: var(--black);
+  --text-secondary: var(--blue-900);
+  --accent: var(--purple);
+
+  /* ---RADIUS--- */
+  --radius-3: 12px;
+
+  /* ---SPACING--- */
+  --space-3: 12px;
+  --space-6: 24px;
+  --space-12: 48px;
+  --space-24: 96px;
+  --space-30: 120px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+@font-face {
+  font-family: "Radley";
+  src: url(./assets/fonts/Radley-Regular.ttf);
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url(./assets/fonts/Quicksand-VariableFont_wght.ttf);
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+}
+

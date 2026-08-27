@@ -46,8 +46,12 @@
   font-family: "Quicksand";
   src: url(./assets/fonts/Quicksand-VariableFont_wght.ttf);
   font-optical-sizing: auto;
-  font-weight: 300;
+  font-weight: 400;
   font-style: normal;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
 }
 
 html, body {

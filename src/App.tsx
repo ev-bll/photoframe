@@ -1,8 +1,10 @@
 import './App.css'
 import { useState, type ChangeEvent } from 'react'
 
-function App() {
+type Screen = 'upload' | 'editor' | 'success'
 
+function App() {
+  const [screen, setScreen] = useState<Screen>('upload')
   const [fileName, setFileName] = useState<string | null>(null)
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
   const [frameRatio, setFrameRatio] = useState(0.01)
@@ -29,6 +31,7 @@ function App() {
 
     const url = URL.createObjectURL(file)
     setPreviewUrl(url)
+    setScreen('editor')
   }
 
   function resetImage() {
@@ -38,6 +41,7 @@ function App() {
 
     setPreviewUrl(null)
     setFileName(null)
+    setScreen('upload')
   }
 
   function buildDownloadName(originalName: string | null) {
@@ -93,13 +97,17 @@ function App() {
       link.click()
 
       URL.revokeObjectURL(downloadUrl)
+
+      setTimeout(() => {
+        setScreen('success')
+      }, 600)
     }, 'image/jpeg', 0.92)
   }
 
   return (
     <main className="page">
 
-    {previewUrl ? (
+    {screen === 'editor' && previewUrl ? (
 
       <section className="editor">
 
@@ -150,6 +158,26 @@ function App() {
         </div>
 
       </section>
+
+    ) : screen === 'success' ? (
+
+    <section className="frame-box">
+      <h1>
+        Your photo has been
+        <br />
+        framed successfully.
+      </h1>
+
+      <label className="button">
+        Upload next image
+        <input
+          className="file-input"
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          onChange={handleImageChange}
+        />
+      </label>
+    </section>
 
     ) : (
       

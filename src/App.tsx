@@ -149,7 +149,6 @@ function App() {
 
         <label className="button">
           Upload image
-
           <input
             className="file-input"
             type="file"

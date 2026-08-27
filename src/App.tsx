@@ -3,6 +3,7 @@ import { useState, type ChangeEvent } from 'react'
 
 function App() {
 
+  const [fileName, setFileName] = useState<string | null>(null)
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
   const [frameRatio, setFrameRatio] = useState(0.01)
   const [previewDimensions, setPreviewDimensions] = useState({
@@ -24,6 +25,8 @@ function App() {
 
     if (!file) return
 
+    setFileName(file.name)
+
     const url = URL.createObjectURL(file)
     setPreviewUrl(url)
   }
@@ -34,6 +37,17 @@ function App() {
     }
 
     setPreviewUrl(null)
+    setFileName(null)
+  }
+
+  function buildDownloadName(originalName: string | null) {
+    if (!originalName) return 'photo-frame.jpg'
+
+    const lastDotIndex = originalName.lastIndexOf('.')
+    const nameWithoutExtension =
+      lastDotIndex > 0 ? originalName.slice(0, lastDotIndex) : originalName
+
+    return `${nameWithoutExtension}-frame.jpg`
   }
 
   async function handleDownload() {
@@ -75,7 +89,7 @@ function App() {
       const link = document.createElement('a')
 
       link.href = downloadUrl
-      link.download = 'photo-with-white-border.jpg'
+      link.download = buildDownloadName(fileName)
       link.click()
 
       URL.revokeObjectURL(downloadUrl)

@@ -11,7 +11,7 @@ export default defineConfig({
         name: 'Photo Frame App',
         short_name: 'PhotoFrame',
         description: 'Add a white border to any photo',
-        theme_color: '#ffffff',
+        theme_color: '#B9D8DA',
         background_color: '#B9D8DA',
         icons: [
           {

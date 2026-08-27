@@ -1,11 +1,12 @@
 #root {
-  min-height: 100vh;
+  height: 100dvh;
 }
 
 .page {
   display: flex;
   align-items: center;
-  min-height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
   background-color: var(--background);
 }
 
@@ -101,6 +102,7 @@ h1 {
   place-items: center;
   width: min(100%, 760px);
   height: 450px;
+  margin-top: -70px;
 }
 
 .photo-frame {
